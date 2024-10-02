@@ -1,6 +1,7 @@
 # regression_model.py
 from sklearn.linear_model import LinearRegression
 from sklearn.model_selection import train_test_split
+import numpy as np
 
 def fit_model(X, y):
     if len(X) > 1:
@@ -12,4 +13,10 @@ def fit_model(X, y):
     model = LinearRegression()
     model.fit(X_train, y_train)
     
-    return model, X_test, y_test
+    X_with_intercept = np.c_[np.ones(X.shape[0]), X]  # Add intercept term
+    hat_matrix = X_with_intercept @ np.linalg.inv(X_with_intercept.T @ X_with_intercept) @ X_with_intercept.T
+
+    # Calculate beta cap (coefficients)
+    beta_cap = model.coef_
+
+    return model, X_test, y_test, hat_matrix, beta_cap
