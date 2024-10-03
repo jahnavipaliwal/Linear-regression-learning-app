@@ -69,6 +69,7 @@ if (
     st.session_state.beta_cap = beta_cap
     st.session_state.df = df
     st.session_state.residuals = residuals  # Store residuals in session state
+    st.session_state.y_pred = y_pred
 else:
     # Use existing data and model from session state
     X = st.session_state.X
@@ -80,7 +81,7 @@ else:
     beta_cap = st.session_state.beta_cap
     df = st.session_state.df
     residuals = st.session_state.residuals  # Retrieve residuals from session state
-
+    y_pred = st.session_state.y_pred
 # Visualization selection
 if num_features == 1:
     visualizations = ["Regression Graph", "Actual vs Predicted", "Residual Plot", "Histogram of Residuals"]
