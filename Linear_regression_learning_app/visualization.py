@@ -7,6 +7,8 @@ import plotly.graph_objects as go
 from statsmodels.stats.outliers_influence import variance_inflation_factor
 import matplotlib.pyplot as plt
 
+st.set_option('deprecation.showPyplotGlobalUse', False)
+
 def plot_simple_regression(X, y, model, X_test, y_test):
     # Make sure to predict using the training data if num_features is 1
     if X.shape[1] == 1:

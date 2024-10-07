@@ -86,9 +86,9 @@ else:
 if num_features == 1:
     visualizations = ["Regression Graph", "Actual vs Predicted", "Residual Plot", "Histogram of Residuals"]
 elif num_features == 2:
-    visualizations = ["3D Regression Graph", "Hat Matrix", "Beta Cap", "Actual vs Predicted", "Residual Plot", "Histogram of Residuals"]
+    visualizations = ["3D Regression Graph", "Hat Matrix", "Beta Cap", "Actual vs Predicted", "Residual Plot", "Histogram of Residuals", "VIF Plot"]
 else:  # num_features > 2
-    visualizations = ["Pair Plot", "Hat Matrix", "Beta Cap", "Actual vs Predicted", "Residual Plot", "Histogram of Residuals"]
+    visualizations = ["Pair Plot", "Hat Matrix", "Beta Cap", "Actual vs Predicted", "Residual Plot", "Histogram of Residuals", "VIF Plot"]
 
 selected_viz = st.sidebar.selectbox("Select Visualization", visualizations)
 
@@ -107,6 +107,8 @@ elif selected_viz == "Actual vs Predicted":
     plot_actual_vs_predicted(y_test, y_pred)
 elif selected_viz == "Residual Plot":
     plot_residuals(y_pred, residuals)
+elif selected_viz == "VIF Plot":  # Add this block for VIF
+    plot_vif(X)
 elif selected_viz == "Histogram of Residuals":
     plot_histogram_of_residuals(residuals)
 
